@@ -1,0 +1,29 @@
+<div class="card mb-3">
+  <div class="card-header bg-light">
+    <h5 class="mb-0">Points d'intérêt</h5>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <button class="btn btn-info text-white w-100" (click)="goToStation()">
+          <i class="fas fa-home me-2"></i>Retour station
+        </button>
+      </div>
+
+      <div class="col-6 mb-2" *ngFor="let point of points">
+        <button class="btn btn-outline-primary w-100" (click)="onPointClick(point)">{{ point }}</button>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Nouveau lieu" [(ngModel)]="newPoint">
+          <button class="btn btn-success" type="button" (click)="addNewPoint()">
+            <i class="fas fa-plus me-1"></i> Ajouter
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

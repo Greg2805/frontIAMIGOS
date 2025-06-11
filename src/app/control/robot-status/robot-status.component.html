@@ -1,0 +1,47 @@
+<div class="card mb-3">
+  <div class="card-header bg-light">
+    <h5 class="mb-0">Statut du robot</h5>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="d-flex align-items-center mb-2">
+          <div class="status-indicator"
+               [ngClass]="{'status-online': isConnected, 'status-offline': !isConnected}"></div>
+          <span>{{ isConnected ? 'Robot connecté' : 'Robot déconnecté' }}</span>
+        </div>
+        <button class="btn btn-sm" [disabled]="isSending"
+                [ngClass]="{'btn-outline-danger': isConnected, 'btn-outline-success': !isConnected}"
+                (click)="toggleConnection()">
+          <span *ngIf="isSending" class="spinner-border spinner-border-sm me-1"></span>
+          {{ isConnected ? 'Déconnecter' : 'Connecter' }}
+        </button>
+
+        <!-- Message d'erreur -->
+        <div *ngIf="errorMessage" class="alert alert-danger mt-2 small">
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-sm-6 mb-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h3 class="mb-0">Position</h3>
+                <p class="mb-0 fw-bold">{{ position }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h3 class="mb-0">Batterie</h3>
+                <p class="mb-0 fw-bold">{{ batteryLevel }}%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

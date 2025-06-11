@@ -1,0 +1,9 @@
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 70vh;">
+  <button (click)="toggleRecording()" style="padding: 1em 2em; font-size: 1.2rem; background: #1976d2; color: white; border: none; border-radius: 4px;">
+    Posez votre question
+  </button>
+  <div *ngIf="finalTranscript" style="margin-top: 2em; font-size: 1.1rem; max-width: 500px; text-align: center;">
+    <b>Vous avez dit :</b><br>
+    {{ finalTranscript }}
+  </div>
+</div>

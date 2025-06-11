@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card connection-card mt-5">
+        <div class="card-header text-center">
+          <h4>Connexion</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="connectionForm" (ngSubmit)="onSubmit()">
+            <div class="alert alert-danger" *ngIf="error">
+              {{ error }}
+            </div>
+              <p>test&#64;example.com</p>
+              <p>password123</p>                                                    <!-- A ENLEVER-->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-envelope"></i>
+                </span>
+                <input
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Votre adresse email"
+                  [ngClass]="{'is-invalid': isFieldInvalid('email')}"
+                />
+              </div>
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
+                <span *ngIf="connectionForm.get('email')?.errors?.['required']">
+                  L'email est requis
+                </span>
+                <span *ngIf="connectionForm.get('email')?.errors?.['email']">
+                  Format d'email invalide
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Mot de passe</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  id="password"
+                  formControlName="password"
+                  class="form-control"
+                  placeholder="Votre mot de passe"
+                  [ngClass]="{'is-invalid': isFieldInvalid('password')}"
+                />
+<!--                <button-->
+<!--                  class="btn btn-outline-secondary"-->
+<!--                  type="button"-->
+<!--                  (click)="togglePasswordVisibility()"-->
+<!--                >-->
+<!--                  <i [class]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>-->
+<!--                </button>-->
+              </div>
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">
+                Le mot de passe est requis
+              </div>
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe" formControlName="rememberMe">
+              <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="connectionForm.invalid || isLoading"
+              >
+                <span class="spinner-border spinner-border-sm me-2" *ngIf="isLoading"></span>
+                Connexion
+              </button>
+            </div>
+          </form>
+
+<!--          <div class="text-center mt-3">-->
+<!--            <a routerLink="/forgot-password">Mot de passe oublié ?</a>-->
+<!--          </div>-->
+        </div>
+<!--        <div class="card-footer text-center">-->
+<!--          <p class="mb-0">Pas encore de compte ? <a routerLink="/register">S'inscrire</a></p>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

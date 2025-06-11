@@ -1,0 +1,35 @@
+<!--<div class="container">-->
+<!--  <nav>-->
+<!--    <img src="assets/images/LogoAimigos.png" alt="Logo" class="navbar-logo me-2">-->
+<!--    <div class="logo">Ai<span>-Migos</span></div>-->
+<!--    <ul class=" nav item nav-links ms-2">-->
+<!--      <li><a routerLink="/" >Accueil</a></li>-->
+<!--      <li><a routerLink="/dashboard" >Tableau de bord</a></li>-->
+<!--      <li><a routerLink="/control" >Contrôle</a></li>-->
+<!--      <li><a routerLink="/data" >Données</a></li>-->
+<!--      <li><a routerLink="/settings" >Paramètres</a></li>-->
+<!--    </ul>-->
+<!--  </nav>-->
+<!--</div>-->
+
+<!--<nav class="navbar navbar-light navbar-expand bg-light custom-navbar ps-5">-->
+<!--  <img src="assets/images/LogoAimigos.png" alt="Logo" class="navbar-logo me-2">-->
+<!--&lt;!&ndash;  <a class="navbar-brand">Ai<span>-Migos</span></a>&ndash;&gt;-->
+<!--  <a class="navbar-brand">{{ title | titlecase }}</a>-->
+<!--  <a class="nav-item nav-link ms-2" routerLink="/">Accueil</a>-->
+<!--  <a class="nav-item nav-link ms-3" routerLink="/dashboard">Tableau de bord</a>-->
+<!--  <a class="nav-item nav-link ms-3" routerLink="/control">Contrôle</a>-->
+<!--  <a class="nav-item nav-link ms-3" routerLink="/data">Données</a>-->
+<!--  <a class="nav-item nav-link ms-3" routerLink="/settings">Paramètres</a>-->
+<!--</nav>-->
+<nav class="navbar navbar-light navbar-expand bg-light custom-navbar ps-5">
+  <img src="assets/images/LogoAimigos.png" alt="Logo" class="navbar-logo me-2" routerLink="/">
+  <a class="navbar-brand" routerLink="/">{{ title | titlecase }}</a>
+
+  <!-- Liens de navigation - visibles seulement quand on n'est pas sur la page de connexion -->
+  <a class="nav-item nav-link ms-2" routerLink="/" *ngIf="!isConnectionPage()">Accueil</a>
+<!--  <a class="nav-item nav-link ms-3" routerLink="/dashboard" *ngIf="!isConnectionPage()">Tableau de bord</a>-->
+  <a class="nav-item nav-link ms-3" routerLink="/control" *ngIf="!isConnectionPage()">Contrôle</a>
+<!--  <a class="nav-item nav-link ms-3" routerLink="/data" *ngIf="!isConnectionPage()">Données</a>-->
+<!--  <a class="nav-item nav-link ms-3" routerLink="/settings" *ngIf="!isConnectionPage()">Paramètres</a>-->
+</nav>
