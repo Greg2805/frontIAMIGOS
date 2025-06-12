@@ -43,6 +43,12 @@ export class IaComponent {
         this.finalTranscript = this.transcript;
         console.log('Reconnaissance terminée, finalTranscript:', this.finalTranscript);
         this.cdr.detectChanges();
+        if (this.finalTranscript) {
+          const synth = window.speechSynthesis;
+          const utter = new SpeechSynthesisUtterance(this.finalTranscript);
+          utter.lang = 'fr-FR';
+          synth.speak(utter);
+        }
         this.sendToBackend(this.finalTranscript); // <-- Envoi au backend ici
       };
     } else {
